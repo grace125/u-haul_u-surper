@@ -33,6 +33,7 @@ polygon = PackedVector2Array(951, 306, 951, 37, 942, -79, 902, -131, 831, -163, 
 metadata/_edit_lock_ = true
 
 [node name="river" type="Node2D" parent="."]
+visible = false
 script = ExtResource("3_x2bix")
 
 [node name="part1" type="Area2D" parent="river"]
