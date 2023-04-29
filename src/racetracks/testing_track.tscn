@@ -1,13 +1,553 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfodx4j2nphf1"]
+[gd_scene load_steps=8 format=3 uid="uid://bfodx4j2nphf1"]
 
 [ext_resource type="Texture2D" uid="uid://cta3wdvtsrbhn" path="res://assets/racetrack/full_tracks/main_track.png" id="1_p6le8"]
 [ext_resource type="PackedScene" uid="uid://cysr2jfgo5j8w" path="res://src/car/car.tscn" id="2_i4r6x"]
+[ext_resource type="Script" path="res://src/racetracks/river.gd" id="3_x2bix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0j0n"]
+size = Vector2(44.0079, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkjmo"]
+size = Vector2(76.3118, 119.258)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krsjw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3f82p"]
+radius = 13.6118
 
 [node name="testing_track" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.5, 0.5)
 texture = ExtResource("1_p6le8")
+metadata/_edit_lock_ = true
 
 [node name="car" parent="." instance=ExtResource("2_i4r6x")]
 position = Vector2(888, 694)
+
+[node name="road" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="road"]
+polygon = PackedVector2Array(951, 306, 951, 37, 942, -79, 902, -131, 831, -163, 714, -224, 677, -311, 673, -441, 669, -527, 618, -585, 557, -618, 492, -633, 424, -631, 347, -617, 272, -580, 233, -533, 232, -461, 222, -388, 197, -354, 156, -342, 84, -375, 32, -421, -38, -475, -89, -493, -149, -504, -238, -500, -327, -479, -415, -443, -498, -406, -578, -398, -627, -411, -659, -447, -670, -495, -663, -556, -640, -599, -605, -615, -554, -620, -492, -625, -432, -637, -406, -652, -374, -709, -371, -755, -388, -797, -439, -841, -506, -872, -581, -892, -668, -903, -783, -900, -983, -863, -1072, -833, -1098, -758, -1114, -665, -1118, -604, -1114, -559, -1111, -513, -1097, -448, -1075, -395, -1041, -343, -1020, -298, -1020, -265, -1039, -226, -1077, -155, -1101, -84, -1106, -8, -1098, 57, -1070, 140, -1042, 206, -1034, 268, -1045, 325, -1063, 381, -1088, 434, -1102, 513, -1098, 576, -1072, 642, -1029, 699, -965, 749, -911, 771, -839, 795, -759, 808, -651, 814, -590, 851, -561, 897, -520, 943, -475, 985, -428, 1008, -363, 1017, -314, 1010, -227, 967, -151, 890, -94, 788, -61, 690, -29, 471, -21, 371, 18, 305, 81, 265, 161, 252, 230, 260, 294, 286, 335, 320, 374, 375, 382, 430, 376, 488, 362, 573, 342, 670, 333, 756, 347, 856, 395, 936, 470, 1008, 550, 1057, 629, 1082, 708, 1087, 810, 1063, 883, 1010, 927, 939, 948, 823, 954, 724, 952, 612, 954, 472, 812, 481, 813, 611, 810, 696, 810, 778, 799, 856, 773, 910, 708, 930, 619, 927, 523, 902, 454, 848, 434, 772, 450, 703, 513, 544, 532, 471, 531, 382, 509, 294, 464, 242, 382, 182, 313, 156, 240, 140, 172, 135, 102, 141, 13, 165, -54, 201, -117, 248, -153, 316, -169, 466, -193, 638, -236, 762, -270, 835, -311, 865, -372, 861, -420, 833, -430, 774, -449, 730, -491, 690, -558, 675, -637, 677, -715, 682, -807, 688, -884, 678, -944, 643, -972, 587, -973, 528, -960, 454, -941, 387, -924, 322, -928, 257, -938, 193, -960, 126, -980, 51, -985, -9, -961, -92, -932, -174, -913, -240, -904, -286, -911, -338, -935, -390, -960, -441, -981, -496, -995, -552, -984, -611, -965, -683, -939, -725, -878, -753, -794, -770, -724, -779, -670, -781, -595, -770, -530, -752, -510, -736, -522, -722, -582, -711, -669, -715, -716, -712, -749, -687, -775, -650, -803, -598, -816, -546, -822, -466, -804, -394, -766, -333, -726, -300, -649, -275, -555, -259, -519, -244, -500, -237, -390, -333, -387, -339, -339, -369, -274, -392, -222, -403, -150, -392, -74, -360, -21, -315, -105, -256, -184, -237, -250, -243, -322, -275, -390, -333, -500, -237, -387, -172, -315, -132, -246, -103, -179, -95, -118, -106, -65, -127, -15, -154, 31, -177, 90, -200, 162, -210, 239, -226, 293, -252, 333, -310, 354, -384, 370, -449, 415, -491, 446, -504, 508, -470, 525, -437, 535, -306, 554, -173, 557, -98, 586, -67, 750, -10, 816, 85, 812, 481, 954, 472)
+metadata/_edit_lock_ = true
+
+[node name="river" type="Node2D" parent="."]
+script = ExtResource("3_x2bix")
+
+[node name="part1" type="Area2D" parent="river"]
+position = Vector2(978, -520)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="river/part1"]
+polygon = PackedVector2Array(-263, 188, -53, -35, 119, -154, 258, -202, 267, -118, 148, -61, 3, 28, -156, 165, -237, 217)
+
+[node name="part2" type="Area2D" parent="river"]
+position = Vector2(-85, 81)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="river/part2"]
+polygon = PackedVector2Array(584, -251, 602, -207, 331, -125, 170, -69, 13, -10, -76, 42, -184, 106, -255, 167, -311, 239, -350, 348, -400, 464, -466, 569, -512, 565, -449, 478, -398, 350, -354, 226, -278, 128, -177, 47, -31, -44, 149, -126, 276, -173, 376, -187, 518, -222)
+
+[node name="part3" type="Area2D" parent="river"]
+position = Vector2(-724, 1085)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="river/part3"]
+polygon = PackedVector2Array(34, -249, -5, -34, -29, 125, -34, 187, 9, 200, 11, 110, 26, 8, 55, -113, 83, -237)
+
+[node name="mountain" type="StaticBody2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mountain"]
+polygon = PackedVector2Array(-1240, 319, -1246, 268, -1218, 216, -1198, 143, -1191, 29, -1189, -35, -1233, -145, -1253, -263, -1241, -408, -1254, -492, -1260, -599, -1293, -678, -1334, -816, -1337, -920, -1273, -1007, -1220, -1052, -1142, -1108, -1074, -1212, -978, -1268, -879, -1342, -755, -1352, -680, -1295, -550, -1252, -430, -1175, -338, -1143, -198, -1125, -108, -1079, 42, -1064, 187, -1039, 265, -975, 350, -932, 466, -922, 573, -942, 694, -972, 800, -949, 895, -914, 1010, -875, 1090, -801, 1110, -710, 1173, -552, 1215, -409, 1251, -283, 1269, -79, 1237, 53, 1186, 183, 1153, 391, 1144, 611, 1167, 787, 1095, 928, 1011, 1091, 841, 1177, 628, 1210, 524, 1199, 372, 1260, 297, 1284, 222, 1290, 112, 1307, 48, 1333, -42, 1318, -160, 1318, -246, 1277, -325, 1237, -406, 1218, -495, 1221, -586, 1234, -683, 1247, -790, 1242, -873, 1176, -959, 1088, -1024, 1011, -1093, 922, -1148, 783, -1163, 673, -1205, 595, -1203, 456, -1240, 319, -1676, 1575, 1667, 1575, 1675, -1572, -1678, -1586, -1676, 1575)
+metadata/_edit_lock_ = true
+
+[node name="obstacles" type="Node2D" parent="."]
+
+[node name="bench" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-377, -480)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/bench"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("RectangleShape2D_r0j0n")
+
+[node name="bench2" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-322, -499)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/bench2"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("RectangleShape2D_r0j0n")
+
+[node name="bridge" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-288, 166)
+rotation = -0.359538
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/bridge"]
+position = Vector2(-9.81393, 4.50436)
+rotation = -0.359538
+shape = SubResource("RectangleShape2D_nkjmo")
+
+[node name="tree" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-936, -487)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree2" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1164, -535)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree2"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree3" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1179, -433)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree3"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree4" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1080, -301)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree4"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree5" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1180, -255)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree5"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree6" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-850, -265)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree6"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree7" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-884, -172)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree7"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree8" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-745, -167)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree8"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree9" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-866, -52)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree9"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree10" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-771, -57)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree10"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree11" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-702, -8)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree11"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree12" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-935, -17)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree12"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree13" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-885, 61)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree13"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree14" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-768, 35)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree14"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree15" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-672, 78)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree15"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree16" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-652, 183)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree16"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree17" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-803, 185)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree17"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree18" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-932, 144)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree18"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree19" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1102, 207)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree19"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree20" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1182, 233)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree20"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree21" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1147, -18)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree21"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree22" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1140, -159)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree22"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree23" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1071, 303)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree23"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree24" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-879, 317)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree24"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree25" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-925, 433)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree25"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree26" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-728, 465)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree26"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree27" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-861, 536)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree27"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree28" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-757, 628)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree28"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree29" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1154, 477)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree29"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree30" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1175, 693)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree30"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree31" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-1010, 845)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree31"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree32" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-790, 921)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree32"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="tree33" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-895, 1023)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree33"]
+position = Vector2(0.43811, -0.164673)
+rotation = -0.359538
+shape = SubResource("CircleShape2D_krsjw")
+
+[node name="small_rock" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-590, 940)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock2" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-570, 1010)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock2"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock3" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-600, 1067)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock3"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock4" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-474, 1105)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock4"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock5" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-232, 1012)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock5"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock6" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-120, 963)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock6"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock7" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-339, 800)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock7"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock8" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-69, 899)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock8"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock9" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-2, 868)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock9"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock10" type="StaticBody2D" parent="obstacles"]
+position = Vector2(141, 957)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock10"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock11" type="StaticBody2D" parent="obstacles"]
+position = Vector2(18, 773)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock11"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock12" type="StaticBody2D" parent="obstacles"]
+position = Vector2(115, 752)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock12"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock13" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-309, 681)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock13"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock14" type="StaticBody2D" parent="obstacles"]
+position = Vector2(475, 1055)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock14"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock15" type="StaticBody2D" parent="obstacles"]
+position = Vector2(528, 848)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock15"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock16" type="StaticBody2D" parent="obstacles"]
+position = Vector2(570, 769)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock16"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock17" type="StaticBody2D" parent="obstacles"]
+position = Vector2(728, 748)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock17"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock18" type="StaticBody2D" parent="obstacles"]
+position = Vector2(711, 889)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock18"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock19" type="StaticBody2D" parent="obstacles"]
+position = Vector2(511, 690)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock19"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[node name="small_rock20" type="StaticBody2D" parent="obstacles"]
+position = Vector2(573, 657)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock20"]
+position = Vector2(0.43811, -0.164673)
+shape = SubResource("CircleShape2D_3f82p")
+
+[connection signal="body_entered" from="river/part1" to="river" method="_on_part_1_body_entered"]
+[connection signal="body_entered" from="river/part2" to="river" method="_on_part_2_body_entered"]
+[connection signal="body_entered" from="river/part3" to="river" method="_on_part_3_body_entered"]
