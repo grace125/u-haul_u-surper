@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfodx4j2nphf1"]
 
-[ext_resource type="Texture2D" uid="uid://dotoru0xs8f2h" path="res://assets/racetrack/full_tracks/test_track.png" id="1_clhmb"]
+[ext_resource type="Texture2D" uid="uid://cta3wdvtsrbhn" path="res://assets/racetrack/full_tracks/main_track.png" id="1_p6le8"]
 [ext_resource type="PackedScene" uid="uid://cysr2jfgo5j8w" path="res://src/car/car.tscn" id="2_i4r6x"]
 
 [node name="testing_track" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(830, 516)
-texture = ExtResource("1_clhmb")
+texture = ExtResource("1_p6le8")
 
 [node name="car" parent="." instance=ExtResource("2_i4r6x")]
-position = Vector2(1364, 762)
+position = Vector2(1720, 1194)
