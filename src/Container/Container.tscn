@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3qu55nqmgv7b"]
+[gd_scene load_steps=7 format=3 uid="uid://c3qu55nqmgv7b"]
 
 [ext_resource type="Script" path="res://src/Container/Walls.gd" id="1_3v4tg"]
 [ext_resource type="Texture2D" uid="uid://csshft7po20up" path="res://icon.svg" id="1_8xrt0"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67bps"]
 size = Vector2(2, 176)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4lswb"]
+friction = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmuns"]
 size = Vector2(32, 32)
@@ -15,6 +18,7 @@ size = Vector2(32, 32)
 [node name="container_background" type="Sprite2D" parent="."]
 position = Vector2(72, 88)
 texture = ExtResource("1_n1xci")
+metadata/_edit_lock_ = true
 
 [node name="Walls" type="StaticBody2D" parent="."]
 script = ExtResource("1_3v4tg")
@@ -44,16 +48,48 @@ shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
 [node name="Box" type="RigidBody2D" parent="."]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_4lswb")
 can_sleep = false
-constant_force = Vector2(2, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
-position = Vector2(80, 96)
+position = Vector2(47, 95)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box/CollisionShape2D"]
+position = Vector2(9.53674e-07, -1.90735e-06)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_8xrt0")
+metadata/_edit_lock_ = true
+
+[node name="Box2" type="RigidBody2D" parent="."]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_4lswb")
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box2"]
+position = Vector2(67, 54)
+shape = SubResource("RectangleShape2D_cmuns")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Box2/CollisionShape2D"]
+position = Vector2(9.53674e-07, -1.90735e-06)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_8xrt0")
+metadata/_edit_lock_ = true
+
+[node name="Box3" type="RigidBody2D" parent="."]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_4lswb")
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box3"]
+position = Vector2(81, 95)
+shape = SubResource("RectangleShape2D_cmuns")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Box3/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_8xrt0")
