@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3qu55nqmgv7b"]
+
+[ext_resource type="Script" path="res://src/Container/Walls.gd" id="1_3v4tg"]
+[ext_resource type="Texture2D" uid="uid://csshft7po20up" path="res://icon.svg" id="1_8xrt0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67bps"]
+size = Vector2(2, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmuns"]
+size = Vector2(32, 32)
+
+[node name="Container" type="Node2D"]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+script = ExtResource("1_3v4tg")
+
+[node name="Wall1" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1, 88)
+shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="Wall2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(72, 175)
+rotation = 1.5708
+scale = Vector2(1, 0.82)
+shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="Wall3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(143, 88)
+shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="Wall4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(72, 1)
+rotation = 1.5708
+scale = Vector2(1, 0.82)
+shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="Box" type="RigidBody2D" parent="."]
+can_sleep = false
+constant_force = Vector2(2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(80, 96)
+shape = SubResource("RectangleShape2D_cmuns")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Box/CollisionShape2D"]
+position = Vector2(9.53674e-07, -1.90735e-06)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_8xrt0")
+metadata/_edit_lock_ = true
