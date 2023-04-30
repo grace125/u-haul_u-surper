@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfodx4j2nphf1"]
+[gd_scene load_steps=8 format=3 uid="uid://bfodx4j2nphf1"]
 
 [ext_resource type="Texture2D" uid="uid://cta3wdvtsrbhn" path="res://assets/racetrack/full_tracks/main_track.png" id="1_p6le8"]
-[ext_resource type="PackedScene" uid="uid://cysr2jfgo5j8w" path="res://src/car/car.tscn" id="2_i4r6x"]
 [ext_resource type="Script" path="res://src/racetracks/river.gd" id="3_x2bix"]
 [ext_resource type="Texture2D" uid="uid://cprs5jpo1t5xg" path="res://assets/racetrack/Daisy.png" id="4_1yenf"]
 
@@ -22,9 +21,6 @@ radius = 13.6118
 position = Vector2(0.5, 0.5)
 texture = ExtResource("1_p6le8")
 metadata/_edit_lock_ = true
-
-[node name="car" parent="." instance=ExtResource("2_i4r6x")]
-position = Vector2(888, 694)
 
 [node name="road" type="Area2D" parent="."]
 visible = false

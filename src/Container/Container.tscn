@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://co8xua22svrag"]
+[gd_scene load_steps=8 format=3 uid="uid://c3qu55nqmgv7b"]
 
 [ext_resource type="Texture2D" uid="uid://csshft7po20up" path="res://icon.svg" id="1_8xrt0"]
 [ext_resource type="Texture2D" uid="uid://cfscbgduf437v" path="res://assets/container/container_inside.png" id="1_n1xci"]
+[ext_resource type="Script" path="res://src/Container/Container.gd" id="1_xdo72"]
 [ext_resource type="Script" path="res://src/Container/forces.gd" id="2_xp8sk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67bps"]
@@ -15,6 +16,7 @@ size = Vector2(32, 32)
 
 [node name="Container" type="Node2D"]
 position = Vector2(136, 30)
+script = ExtResource("1_xdo72")
 
 [node name="container_background" type="Sprite2D" parent="."]
 position = Vector2(72, 88)
@@ -36,7 +38,6 @@ node_b = NodePath("../Door2")
 metadata/_edit_lock_ = true
 
 [node name="floor" type="StaticBody2D" parent="."]
-constant_linear_velocity = Vector2(-50, 0)
 script = ExtResource("2_xp8sk")
 metadata/_edit_lock_ = true
 
