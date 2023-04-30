@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dxtdc0macmq16"]
 
 [ext_resource type="PackedScene" uid="uid://bfodx4j2nphf1" path="res://src/racetracks/testing_track.tscn" id="1_80o6r"]
-[ext_resource type="PackedScene" uid="uid://cysr2jfgo5j8w" path="res://src/car/car.tscn" id="2_avf7a"]
 [ext_resource type="PackedScene" uid="uid://co8xua22svrag" path="res://src/Container/Container.tscn" id="3_5hq5e"]
 
 [node name="Race" type="Node2D"]
@@ -14,15 +13,9 @@ follow_viewport_enabled = true
 
 [node name="testing_track" parent="CanvasLayer1" instance=ExtResource("1_80o6r")]
 
-[node name="car" parent="CanvasLayer1" instance=ExtResource("2_avf7a")]
-position = Vector2(888, 694)
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 2
 offset = Vector2(125, 0)
 transform = Transform2D(1, 0, 0, 1, 125, 0)
 
 [node name="Container" parent="CanvasLayer2" instance=ExtResource("3_5hq5e")]
-
-[connection signal="shake" from="CanvasLayer1/car" to="CanvasLayer2/Container" method="shake"]
-[connection signal="turning" from="CanvasLayer1/car" to="CanvasLayer2/Container" method="turning"]
