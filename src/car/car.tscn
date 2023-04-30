@@ -39,12 +39,14 @@ animations = [{
 "speed": 0.2
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lejn"]
-height = 37.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3idj3"]
+points = PackedVector2Array(10, 16, 4, 20, -4, 20, -10, 16, -10, -15, -4, -19, 4, -19, 10, -15)
 
 [node name="car" type="RigidBody2D"]
 collision_layer = 2
 mass = 3628.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 6)
 gravity_scale = 0.0
 max_contacts_reported = 5
 contact_monitor = true
@@ -62,5 +64,8 @@ position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_5lejn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_3idj3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
