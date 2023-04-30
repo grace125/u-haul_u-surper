@@ -82,6 +82,61 @@ position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
 shape = SubResource("RectangleShape2D_r0j0n")
 
+[node name="big_rock" type="StaticBody2D" parent="obstacles"]
+position = Vector2(681, 711)
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacles/big_rock"]
+polygon = PackedVector2Array(-9, -34, -28, -31, -33, -22, -40, -15, -40, -2, -33, 9, -31, 18, -22, 27, -14, 31, -3, 30, 4, 32, 15, 24, 26, 12, 39, 3, 47, 6, 60, -1, 62, -16, 56, -26, 48, -33, 32, -41, 20, -42, 8, -38)
+
+[node name="big_rock2" type="StaticBody2D" parent="obstacles"]
+position = Vector2(652, 859)
+rotation = -0.837758
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacles/big_rock2"]
+polygon = PackedVector2Array(-9, -34, -28, -31, -33, -22, -40, -15, -40, -2, -33, 9, -31, 18, -22, 27, -14, 31, -3, 30, 4, 32, 15, 24, 26, 12, 39, 3, 47, 6, 60, -1, 62, -16, 56, -26, 48, -33, 32, -41, 20, -42, 8, -38)
+
+[node name="big_rock3" type="StaticBody2D" parent="obstacles"]
+position = Vector2(506, 758)
+rotation = 2.27416
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacles/big_rock3"]
+polygon = PackedVector2Array(-9, -34, -28, -31, -33, -22, -40, -15, -40, -2, -33, 9, -31, 18, -22, 27, -14, 31, -3, 30, 4, 32, 15, 24, 26, 12, 39, 3, 47, 6, 60, -1, 62, -16, 56, -26, 48, -33, 32, -41, 20, -42, 8, -38)
+
+[node name="big_rock4" type="StaticBody2D" parent="obstacles"]
+position = Vector2(380, 1022)
+rotation = 1.07687
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacles/big_rock4"]
+polygon = PackedVector2Array(-9, -34, -28, -31, -33, -22, -40, -15, -40, -2, -33, 9, -31, 18, -22, 27, -14, 31, -3, 30, 4, 32, 15, 24, 26, 12, 39, 3, 47, 6, 60, -1, 62, -16, 56, -26, 48, -33, 32, -41, 20, -42, 8, -38)
+
+[node name="big_rock5" type="StaticBody2D" parent="obstacles"]
+position = Vector2(71, 913)
+rotation = -0.837758
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacles/big_rock5"]
+polygon = PackedVector2Array(-9, -34, -28, -31, -33, -22, -40, -15, -40, -2, -33, 9, -31, 18, -22, 27, -14, 31, -3, 30, 4, 32, 15, 24, 26, 12, 39, 3, 47, 6, 60, -1, 62, -16, 56, -26, 48, -33, 32, -41, 20, -42, 8, -38)
+
+[node name="big_rock6" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-378, 741)
+rotation = -0.837758
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacles/big_rock6"]
+polygon = PackedVector2Array(-9, -34, -28, -31, -33, -22, -40, -15, -40, -2, -33, 9, -31, 18, -22, 27, -14, 31, -3, 30, 4, 32, 15, 24, 26, 12, 39, 3, 47, 6, 60, -1, 62, -16, 56, -26, 48, -33, 32, -41, 20, -42, 8, -38)
+
+[node name="big_rock7" type="StaticBody2D" parent="obstacles"]
+position = Vector2(-298, 1084)
+rotation = -0.359538
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacles/big_rock7"]
+polygon = PackedVector2Array(-9, -34, -28, -31, -33, -22, -40, -15, -40, -2, -33, 9, -31, 18, -22, 27, -14, 31, -3, 30, 4, 32, 15, 24, 26, 12, 39, 3, 47, 6, 60, -1, 62, -16, 56, -26, 48, -33, 32, -41, 20, -42, 8, -38)
+
 [node name="bridge" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-288, 166)
 rotation = -0.359538
