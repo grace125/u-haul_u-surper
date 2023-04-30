@@ -1,19 +1,13 @@
 extends StaticBody2D
 
-func turning(direction: int, velocity: float):
-	match direction:
-		-1:
-			constant_linear_velocity.x = -velocity
-		0:
-			constant_linear_velocity.x = 0
-		1:
-			constant_linear_velocity.x = velocity
+func turning(velocity: float):
+		constant_linear_velocity.x = velocity*15
 
 var collision_time = 0.0
 
 func collision(force: Vector2):
-	constant_linear_velocity.x = force.x
-	constant_linear_velocity.y = -abs(force.y)
+	constant_linear_velocity.x = force.x*3
+	constant_linear_velocity.y = -abs(force.y)*3
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,8 +16,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	collision_time += delta
-	if collision_time > 1:
+	if (collision_time > 0.25) && (constant_linear_velocity.y != 0.0):
 		collision_time = 0.0
 		collision(Vector2(0,0))
+	else: collision_time += delta
 	

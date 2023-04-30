@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://co8xua22svrag"]
+[gd_scene load_steps=9 format=3 uid="uid://c3qu55nqmgv7b"]
 
 [ext_resource type="Texture2D" uid="uid://csshft7po20up" path="res://icon.svg" id="1_8xrt0"]
 [ext_resource type="Texture2D" uid="uid://cfscbgduf437v" path="res://assets/container/container_inside.png" id="1_n1xci"]
 [ext_resource type="Script" path="res://src/Container/Container.gd" id="1_xdo72"]
 [ext_resource type="Script" path="res://src/Container/forces.gd" id="2_xp8sk"]
+[ext_resource type="Texture2D" uid="uid://xqaegyt2kb4a" path="res://assets/container/container_door.png" id="4_ya288"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67bps"]
 size = Vector2(2, 175.755)
@@ -24,20 +25,21 @@ texture = ExtResource("1_n1xci")
 metadata/_edit_lock_ = true
 
 [node name="Hinge1" type="PinJoint2D" parent="."]
-position = Vector2(0.999999, 1)
+position = Vector2(0.999992, 87)
 scale = Vector2(0.7, 0.7)
 node_a = NodePath("../ceiling")
 node_b = NodePath("../Door1")
 metadata/_edit_lock_ = true
 
 [node name="Hinge2" type="PinJoint2D" parent="."]
-position = Vector2(143, 1)
+position = Vector2(143, 87)
 scale = Vector2(0.7, 0.7)
 node_a = NodePath("../ceiling")
 node_b = NodePath("../Door2")
-metadata/_edit_lock_ = true
 
 [node name="floor" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("2_xp8sk")
 metadata/_edit_lock_ = true
 
@@ -49,6 +51,8 @@ shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
 [node name="bucket" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 metadata/_edit_lock_ = true
 
 [node name="bucket" type="CollisionShape2D" parent="bucket"]
@@ -58,20 +62,21 @@ scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="bucket3" type="CollisionShape2D" parent="bucket"]
+[node name="bucket2" type="CollisionShape2D" parent="bucket"]
 position = Vector2(333, -70)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="bucket4" type="CollisionShape2D" parent="bucket"]
+[node name="bucket3" type="CollisionShape2D" parent="bucket"]
 position = Vector2(-189, -70)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
 [node name="ceiling" type="StaticBody2D" parent="."]
-script = ExtResource("2_xp8sk")
+collision_layer = 4
+collision_mask = 4
 metadata/_edit_lock_ = true
 
 [node name="ceiling" type="CollisionShape2D" parent="ceiling"]
@@ -81,25 +86,63 @@ scale = Vector2(1, 0.82)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
+[node name="ceiling2" type="CollisionShape2D" parent="ceiling"]
+position = Vector2(1, 44)
+scale = Vector2(1, 0.49)
+shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ceiling/ceiling2"]
+position = Vector2(9.53674e-07, -1.90735e-06)
+texture = ExtResource("4_ya288")
+metadata/_edit_lock_ = true
+
+[node name="ceiling3" type="CollisionShape2D" parent="ceiling"]
+position = Vector2(143, 44)
+scale = Vector2(1, 0.49)
+shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ceiling/ceiling3"]
+position = Vector2(9.53674e-07, -1.90735e-06)
+texture = ExtResource("4_ya288")
+metadata/_edit_lock_ = true
+
 [node name="Door1" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 metadata/_edit_lock_ = true
 
 [node name="Door1" type="CollisionShape2D" parent="Door1"]
-position = Vector2(1, 87)
-scale = Vector2(1, 0.98)
+position = Vector2(1, 130)
+scale = Vector2(1, 0.49)
 shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Door1/Door1"]
+position = Vector2(9.53674e-07, -1.90735e-06)
+texture = ExtResource("4_ya288")
 metadata/_edit_lock_ = true
 
 [node name="Door2" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 metadata/_edit_lock_ = true
 
 [node name="Door2" type="CollisionShape2D" parent="Door2"]
-position = Vector2(143, 86.88)
-scale = Vector2(1, 0.98)
+position = Vector2(143, 130)
+scale = Vector2(1, 0.49)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Door2/Door2"]
+position = Vector2(9.53674e-07, -1.90735e-06)
+texture = ExtResource("4_ya288")
+metadata/_edit_lock_ = true
+
 [node name="Box" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_4lswb")
 can_sleep = false
@@ -117,6 +160,8 @@ texture = ExtResource("1_8xrt0")
 metadata/_edit_lock_ = true
 
 [node name="Box2" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_4lswb")
 can_sleep = false
@@ -134,6 +179,8 @@ texture = ExtResource("1_8xrt0")
 metadata/_edit_lock_ = true
 
 [node name="Box3" type="RigidBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_4lswb")
 can_sleep = false

@@ -1,12 +1,10 @@
 extends Node2D
 
-func turning(direction: int, velocity: float):
-	$floor.turning(direction, velocity)
-	$ceiling.turning(direction, velocity)
+func turning(velocity: float):
+	$floor.turning(velocity)
 
 func shake(vec: Vector2):
 	$floor.collision(vec)
-	$ceiling.collision(vec)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
