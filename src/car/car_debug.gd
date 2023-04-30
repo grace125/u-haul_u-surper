@@ -11,3 +11,6 @@ func _process(delta):
 
 func _on_turning(control, steer_speed):
 	print("Turn change: " + str(control) + ", " + str(steer_speed))
+
+func _on_car_shake(vec: Vector2):
+	print("Car Shake: " + str(vec))
