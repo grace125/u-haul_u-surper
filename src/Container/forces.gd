@@ -22,8 +22,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	collision_time += delta
-	if collision_time > 1:
-		collision_time = 0.0
-		collision(Vector2(0,0))
+	#collision_time += delta
+	#if collision_time > 1:
+	#	collision_time = 0.0
+	#	collision(Vector2(0,0))
 	
