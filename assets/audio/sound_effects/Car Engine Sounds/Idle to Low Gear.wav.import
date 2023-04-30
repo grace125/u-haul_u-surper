@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bw0ogdtsjolyc"
+path="res://.godot/imported/Idle to Low Gear.wav-24a269d2d4610712cec425e79c89cee8.sample"
+
+[deps]
+
+source_file="res://assets/audio/sound_effects/Car Engine Sounds/Idle to Low Gear.wav"
+dest_files=["res://.godot/imported/Idle to Low Gear.wav-24a269d2d4610712cec425e79c89cee8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
