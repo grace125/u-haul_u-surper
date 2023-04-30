@@ -31,9 +31,7 @@ func _physics_process(delta):
 		
 	if _normalize(steer_control) != last_steer_control:
 		last_steer_control = _normalize(steer_control)
-		turning.emit(last_steer_control, steer_speed)
-	
-
+		turning.emit(last_steer_control, steer_speed*50.0)
 	
 func _process(delta):
 	var rotation_direction = Vector2(0.0, 1.0).rotated(rotation)
@@ -61,6 +59,4 @@ func _on_body_entered(body):
 		# assume the object collided with is a static body
 		force = mass * -linear_velocity * 60.0
 	
-	shake.emit(force)
-	# print(force)
-	
+	shake.emit(force / 80000.0)
