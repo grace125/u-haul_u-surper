@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3qu55nqmgv7b"]
+[gd_scene load_steps=6 format=3 uid="uid://c3qu55nqmgv7b"]
 
 [ext_resource type="Script" path="res://src/Container/Walls.gd" id="1_3v4tg"]
 [ext_resource type="Texture2D" uid="uid://csshft7po20up" path="res://icon.svg" id="1_8xrt0"]
+[ext_resource type="Texture2D" uid="uid://cfscbgduf437v" path="res://assets/container/container_inside.png" id="1_n1xci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67bps"]
 size = Vector2(2, 176)
@@ -10,6 +11,10 @@ size = Vector2(2, 176)
 size = Vector2(32, 32)
 
 [node name="Container" type="Node2D"]
+
+[node name="container_background" type="Sprite2D" parent="."]
+position = Vector2(72, 88)
+texture = ExtResource("1_n1xci")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 script = ExtResource("1_3v4tg")
