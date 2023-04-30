@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfodx4j2nphf1"]
+[gd_scene load_steps=9 format=3 uid="uid://bfodx4j2nphf1"]
 
 [ext_resource type="Texture2D" uid="uid://cta3wdvtsrbhn" path="res://assets/racetrack/full_tracks/main_track.png" id="1_p6le8"]
 [ext_resource type="PackedScene" uid="uid://cysr2jfgo5j8w" path="res://src/car/car.tscn" id="2_i4r6x"]
 [ext_resource type="Script" path="res://src/racetracks/river.gd" id="3_x2bix"]
+[ext_resource type="Texture2D" uid="uid://cprs5jpo1t5xg" path="res://assets/racetrack/Daisy.png" id="4_1yenf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0j0n"]
 size = Vector2(44.0079, 16)
@@ -603,6 +604,10 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock20"]
 position = Vector2(0.43811, -0.164673)
 shape = SubResource("CircleShape2D_3f82p")
+
+[node name="daisy" type="Sprite2D" parent="."]
+position = Vector2(-1199, -1079)
+texture = ExtResource("4_1yenf")
 
 [connection signal="body_entered" from="river/part1" to="river" method="_on_part_1_body_entered"]
 [connection signal="body_entered" from="river/part2" to="river" method="_on_part_2_body_entered"]
