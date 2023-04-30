@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://global.gd"
+Music="*res://src/managers/music.tscn"
+SFX="*res://src/managers/sound_fx.tscn"
 
 [display]
 

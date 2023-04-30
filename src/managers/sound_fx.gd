@@ -1,14 +1,14 @@
 extends Node
 
-onready var audio_players = $audio_players
-onready var audio_players_list = audio_players.get_children()
+@onready var audio_players = $audio_players
+@onready var audio_players_list = audio_players.get_children()
 
 const SOUND_FX_DIRECTORY_PATH = "res://assets/audio/sound_effects/"
 const SOUND_FX_VOLUME: float = -4.0
 
 var sound_fx_files: Dictionary = {}
 
-var _crng = CustomRandomGenerator.new()
+#var _crng = CustomRandomGenerator.new()
 var _rng = RandomNumberGenerator.new()
 
 
@@ -18,8 +18,8 @@ func _ready() -> void:
 
 
 func set_up_sound_effects_library_recursive(directory_path: String) -> void:
-	var dir = Directory.new()
-	if dir.open(directory_path) == OK:
+	var dir = DirAccess.open(directory_path)
+	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
@@ -28,7 +28,8 @@ func set_up_sound_effects_library_recursive(directory_path: String) -> void:
 			elif not dir.current_is_dir() and file_name.ends_with(".wav.import") or file_name.ends_with(".ogg.import"):
 				var file_name2 = file_name.replace(".import", "")
 				var sound_name = file_name
-				sound_name.erase(sound_name.length() - 11, 11)
+				sound_name = sound_name.trim_suffix(".wav.import")
+				sound_name = sound_name.trim_suffix(".ogg.import")
 				sound_fx_files[sound_name] = (load(directory_path + file_name2))
 			file_name = dir.get_next()
 	else:
@@ -46,9 +47,9 @@ func play_sfx(sound_name: String, pitch_range: float = 0.0, pitch: float = 1.0, 
 			break
 
 
-func play_random_sfx(weighted_sound_list: Array, pitch_range: float = 0.0, pitch: float = 1.0, volume: float = SOUND_FX_VOLUME):
-	var sound_name = _crng.weighted_list_randomization(weighted_sound_list)
-	play_sfx(sound_name, pitch_range, pitch, volume)
+#func play_random_sfx(weighted_sound_list: Array, pitch_range: float = 0.0, pitch: float = 1.0, volume: float = SOUND_FX_VOLUME):
+#	var sound_name = _crng.weighted_list_randomization(weighted_sound_list)
+#	play_sfx(sound_name, pitch_range, pitch, volume)
 
 
 func stop_sfx(sound_name: String, stop_all: bool = false) -> void:
