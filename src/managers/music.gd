@@ -40,9 +40,7 @@ func play_song(new_song: String, volume: float = DEFAULT_MUSIC_VOLUME, fade_dura
 	if new_song != current_song:
 		var tween = get_tree().create_tween().set_ease(MUSIC_CROSSFADE_TWEEN_EASE).set_trans(MUSIC_CROSSFADE_TWEEN_TRANS)
 		tween.tween_property(music_player, "volume_db", -80, fade_duration)
-		print("start tween")
 		await get_tree().create_timer(fade_duration).timeout
-		print("end tween")
 		current_song = new_song
 		music_player.stream = music_files[new_song]
 		music_player.play()
