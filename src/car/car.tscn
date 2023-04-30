@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://src/car/car.gd" id="1_axwkm"]
 [ext_resource type="Texture2D" uid="uid://cgxp06n32gh3w" path="res://assets/car/car.png" id="2_68pb2"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lejn"]
+height = 37.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcu0u"]
 atlas = ExtResource("2_68pb2")
 region = Rect2(0, 0, 32, 48)
@@ -39,9 +42,6 @@ animations = [{
 "speed": 0.2
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5lejn"]
-height = 37.0
-
 [node name="car" type="RigidBody2D"]
 mass = 3628.0
 gravity_scale = 0.0
@@ -51,14 +51,14 @@ linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_axwkm")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_5lejn")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.98023e-08, 0)
 sprite_frames = SubResource("SpriteFrames_swnrl")
 frame_progress = 0.134125
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("CapsuleShape2D_5lejn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
