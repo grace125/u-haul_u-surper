@@ -45,10 +45,6 @@ func _process(delta):
 	if angular_velocity != r0:
 		turning.emit(r0)
 		r0 = angular_velocity
-		
-	if Input.is_action_just_pressed("Enter"):
-		spawn_box(false)
-	
 
 func _normalize(x: float):
 	if x < 0.0:

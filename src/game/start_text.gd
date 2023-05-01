@@ -9,7 +9,6 @@ var countdown: int = 3
 func _ready():
 	SFX.play_sfx("race_start_beep_1")
 
-
 func _on_321_timer_timeout():
 	countdown -= 1
 	if countdown <= 0:

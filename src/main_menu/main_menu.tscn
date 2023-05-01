@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://debdwgx0ynrr3"]
+[gd_scene load_steps=4 format=3 uid="uid://debdwgx0ynrr3"]
 
 [ext_resource type="Script" path="res://src/main_menu/main_menu.gd" id="1_klh8m"]
 [ext_resource type="FontFile" uid="uid://7xetsuk0kuwy" path="res://assets/fonts/CoffeCake.ttf" id="1_xu64a"]
+[ext_resource type="PackedScene" uid="uid://bfodx4j2nphf1" path="res://src/racetracks/testing_track.tscn" id="2_3y4m8"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -12,8 +13,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_klh8m")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,8 +30,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_xu64a")
 text = "U-Haul U-surper"
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
+[node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 187.0
 offset_top = 152.0
 offset_right = 233.0
@@ -37,4 +38,16 @@ offset_bottom = 183.0
 theme_override_fonts/font = ExtResource("1_xu64a")
 text = "Start"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="testing_track" parent="." instance=ExtResource("2_3y4m8")]
+
+[node name="enemy_car" parent="testing_track/enemy_cars/enemy_cars_holder" index="0"]
+car_color = Color(1, 1, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="testing_track/enemy_cars/enemy_cars_holder/enemy_car" index="2"]
+
+[node name="enemy_car2" parent="testing_track/enemy_cars/enemy_cars_holder" index="1"]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+
+[editable path="testing_track"]
