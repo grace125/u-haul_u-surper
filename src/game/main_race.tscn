@@ -18,7 +18,7 @@ follow_viewport_enabled = true
 
 [node name="testing_track" parent="CanvasLayer1" instance=ExtResource("1_80o6r")]
 
-[node name="car" parent="CanvasLayer1" instance=ExtResource("2_avf7a")]
+[node name="car" parent="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder" index="2" instance=ExtResource("2_avf7a")]
 position = Vector2(881, 693)
 metadata/_edit_lock_ = true
 
@@ -51,7 +51,9 @@ transform = Transform2D(1, 0, 0, 1, 125, 0)
 
 [node name="Container" parent="CanvasLayer2" instance=ExtResource("3_5hq5e")]
 
-[connection signal="shake" from="CanvasLayer1/car" to="CanvasLayer2/Container" method="shake"]
-[connection signal="turning" from="CanvasLayer1/car" to="CanvasLayer2/Container" method="turning"]
+[connection signal="shake" from="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/car" to="CanvasLayer2/Container" method="shake"]
+[connection signal="turning" from="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/car" to="CanvasLayer2/Container" method="turning"]
 [connection signal="timeout" from="CanvasLayer1/start_text/321_timer" to="CanvasLayer1/start_text" method="_on_321_timer_timeout"]
-[connection signal="spawn_box" from="CanvasLayer2/Container" to="CanvasLayer1/car" method="spawn_box"]
+[connection signal="spawn_box" from="CanvasLayer2/Container" to="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/car" method="spawn_box"]
+
+[editable path="CanvasLayer1/testing_track"]

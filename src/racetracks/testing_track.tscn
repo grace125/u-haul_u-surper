@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfodx4j2nphf1"]
+[gd_scene load_steps=12 format=3 uid="uid://bfodx4j2nphf1"]
 
 [ext_resource type="Texture2D" uid="uid://cta3wdvtsrbhn" path="res://assets/racetrack/full_tracks/main_track.png" id="1_p6le8"]
 [ext_resource type="Script" path="res://src/racetracks/river.gd" id="3_x2bix"]
 [ext_resource type="Texture2D" uid="uid://cprs5jpo1t5xg" path="res://assets/racetrack/Daisy.png" id="4_1yenf"]
 [ext_resource type="Script" path="res://src/racetracks/enemy_cars.gd" id="4_kuliw"]
 [ext_resource type="PackedScene" uid="uid://dylfpyv8lmvmd" path="res://src/racetracks/enemy_car.tscn" id="5_x62bq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3ms6"]
+size = Vector2(296, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xofqd"]
 size = Vector2(44.0079, 16)
@@ -29,6 +32,12 @@ point_count = 41
 position = Vector2(0.5, 0.5)
 texture = ExtResource("1_p6le8")
 metadata/_edit_lock_ = true
+
+[node name="finish_line" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="finish_line"]
+position = Vector2(883, 725)
+shape = SubResource("RectangleShape2D_s3ms6")
 
 [node name="road" type="Area2D" parent="."]
 visible = false
