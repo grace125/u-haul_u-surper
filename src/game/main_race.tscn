@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/game/main_race.gd" id="1_65pml"]
 [ext_resource type="PackedScene" uid="uid://bfodx4j2nphf1" path="res://src/racetracks/testing_track.tscn" id="1_80o6r"]
 [ext_resource type="PackedScene" uid="uid://cysr2jfgo5j8w" path="res://src/car/car.tscn" id="2_avf7a"]
-[ext_resource type="PackedScene" uid="uid://co8xua22svrag" path="res://src/Container/Container.tscn" id="3_5hq5e"]
+[ext_resource type="PackedScene" uid="uid://c3qu55nqmgv7b" path="res://src/Container/Container.tscn" id="3_5hq5e"]
 [ext_resource type="FontFile" uid="uid://7xetsuk0kuwy" path="res://assets/fonts/CoffeCake.ttf" id="3_215hi"]
 [ext_resource type="Script" path="res://src/game/start_text.gd" id="4_xbrsb"]
 
