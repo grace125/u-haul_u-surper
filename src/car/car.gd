@@ -3,6 +3,8 @@ class_name Car extends RigidBody2D
 @export var speed = 1.0
 @export var steer_speed = 1.0
 
+const BOX = preload("res://src/race_interactables/box.tscn")
+
 var last_steer_control: float = 0.0;
 var last_contact_count: float = 0.0;
 var v0: Vector2 = linear_velocity;
@@ -43,6 +45,9 @@ func _process(delta):
 	if angular_velocity != r0:
 		turning.emit(r0)
 		r0 = angular_velocity
+		
+	if Input.is_action_just_pressed("Enter"):
+		spawn_box(false)
 	
 
 func _normalize(x: float):
@@ -65,3 +70,15 @@ func _on_body_entered(body):
 		force = mass * -linear_velocity * 60.0
 	
 	shake.emit(force / 80000.0)
+
+
+func spawn_box(left: bool):
+	var box = BOX.instantiate()
+	if left:
+		box.position = position - Vector2(15.0, 0.0).rotated(rotation)
+		box.linear_velocity = - 4*Vector2(15.0, 0.0).rotated(rotation)
+	else:
+		box.position = position + Vector2(15.0, 0.0).rotated(rotation)
+		box.linear_velocity = 4*Vector2(15.0, 0.0).rotated(rotation)
+	get_parent().add_child(box)
+	

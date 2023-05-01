@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfrd4hnq4ihj6"]
+[gd_scene load_steps=8 format=3 uid="uid://fjhovfng8sfj"]
 
 [ext_resource type="Script" path="res://src/game/main_race.gd" id="1_65pml"]
 [ext_resource type="PackedScene" uid="uid://bfodx4j2nphf1" path="res://src/racetracks/testing_track.tscn" id="1_80o6r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3qu55nqmgv7b" path="res://src/Container/Container.tscn" id="3_5hq5e"]
 [ext_resource type="FontFile" uid="uid://7xetsuk0kuwy" path="res://assets/fonts/CoffeCake.ttf" id="3_215hi"]
 [ext_resource type="Script" path="res://src/game/start_text.gd" id="4_xbrsb"]
+[ext_resource type="PackedScene" uid="uid://dxybwahf2trua" path="res://src/race_interactables/box.tscn" id="6_eq46p"]
 
 [node name="Race" type="Node2D"]
 script = ExtResource("1_65pml")
@@ -17,6 +18,7 @@ transform = Transform2D(1, 0, 0, 1, -50, 0)
 follow_viewport_enabled = true
 
 [node name="testing_track" parent="CanvasLayer1" instance=ExtResource("1_80o6r")]
+metadata/_edit_lock_ = true
 
 [node name="car" parent="CanvasLayer1" instance=ExtResource("2_avf7a")]
 position = Vector2(881, 693)
@@ -38,11 +40,15 @@ theme_override_font_sizes/font_size = 35
 text = "3"
 horizontal_alignment = 1
 script = ExtResource("4_xbrsb")
+metadata/_edit_lock_ = true
 
 [node name="321_timer" type="Timer" parent="CanvasLayer1/start_text"]
 process_callback = 0
 one_shot = true
 autostart = true
+
+[node name="box" parent="CanvasLayer1" instance=ExtResource("6_eq46p")]
+position = Vector2(839, -6)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 2
