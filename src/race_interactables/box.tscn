@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd7hgos2hh1hj"]
+[gd_scene load_steps=10 format=3 uid="uid://dxybwahf2trua"]
 
-[ext_resource type="Texture2D" uid="uid://du3cwp6m7iro6" path="res://assets/racetrack/box.png" id="1_xnpov"]
+[ext_resource type="Script" path="res://src/race_interactables/box.gd" id="1_c1t65"]
+[ext_resource type="Texture2D" uid="uid://prqj3201cbjv" path="res://assets/racetrack/box.png" id="1_xnpov"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f0i8"]
 atlas = ExtResource("1_xnpov")
@@ -56,10 +57,16 @@ size = Vector2(12, 12)
 [node name="box" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 2
+mass = 30.0
+gravity_scale = 0.0
+linear_damp = 6.0
+angular_damp = 6.0
+script = ExtResource("1_c1t65")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5qfqm")
 animation = &"roll"
+frame_progress = 0.0138159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wd4et")
