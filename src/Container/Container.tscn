@@ -71,25 +71,39 @@ shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
 [node name="bucket" type="StaticBody2D" parent="."]
+position = Vector2(0, 100)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_lock_ = true
 
 [node name="bucket" type="CollisionShape2D" parent="bucket"]
-position = Vector2(72, 193)
+position = Vector2(-60, 191)
 rotation = 1.5708
-scale = Vector2(3, 3)
+scale = Vector2(3, 1.5)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
 [node name="bucket2" type="CollisionShape2D" parent="bucket"]
-position = Vector2(333, -70)
+position = Vector2(-189, -70)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="bucket3" type="CollisionShape2D" parent="bucket"]
-position = Vector2(-189, -70)
+[node name="bucket2" type="StaticBody2D" parent="."]
+position = Vector2(0, 100)
+collision_layer = 4
+collision_mask = 4
+metadata/_edit_lock_ = true
+
+[node name="bucket" type="CollisionShape2D" parent="bucket2"]
+position = Vector2(204, 191)
+rotation = 1.5708
+scale = Vector2(3, 1.5)
+shape = SubResource("RectangleShape2D_67bps")
+metadata/_edit_lock_ = true
+
+[node name="bucket2" type="CollisionShape2D" parent="bucket2"]
+position = Vector2(333, -70)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
@@ -173,6 +187,7 @@ position = Vector2(40, 139)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
@@ -193,6 +208,7 @@ position = Vector2(107, 145)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box2/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
@@ -206,12 +222,14 @@ collision_mask = 4
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_m5j7u")
 can_sleep = false
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box6"]
 position = Vector2(93, 111)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box6/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
@@ -231,6 +249,7 @@ metadata/_edit_lock_ = true
 position = Vector2(119, 101)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box3/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
@@ -250,6 +269,7 @@ position = Vector2(47, 88)
 scale = Vector2(2.5, 1)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box5/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
@@ -264,6 +284,7 @@ collision_mask = 4
 mass = 1.5
 physics_material_override = SubResource("PhysicsMaterial_rf8pe")
 can_sleep = false
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box4"]
 position = Vector2(32, 48)

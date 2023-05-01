@@ -6,8 +6,8 @@ func turning(velocity: float):
 var collision_time = 0.0
 
 func collision(force: Vector2):
-	constant_linear_velocity.x = force.x*3
-	constant_linear_velocity.y = -abs(force.y)*3
+	constant_linear_velocity.x = force.x
+	constant_linear_velocity.y = -abs(force.y)
 
 
 # Called when the node enters the scene tree for the first time.
