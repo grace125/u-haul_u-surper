@@ -36,7 +36,7 @@ func _process(delta):
 func _on_finish_line_race_finished(place):
 	var end_scene = END_SCENE.instantiate()
 	end_scene.place = place
-	end_scene.total_boxes = 100
+	end_scene.total_boxes = 6
 	end_scene.score = container.score
 	end_scene.boxes_left = container.num_boxes
 	self.queue_free()
