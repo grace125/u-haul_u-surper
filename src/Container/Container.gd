@@ -1,5 +1,8 @@
 extends Node2D
 
+var score = 100
+var num_boxes = 6
+
 signal spawn_box(left: bool)
 
 func turning(velocity: float):
@@ -18,11 +21,14 @@ func _process(delta):
 	pass
 
 func spawn_left(body: Node2D):
-	print("OOOOOO")
+	num_boxes -= 1
+	score -= body.get_meta("Value")
 	body.queue_free()
 	spawn_box.emit(true)
 	
 func spawn_right(body: Node2D):
-	print("AAAAAA")
+	num_boxes -= 1
+	score -= body.get_meta("Value")
 	body.queue_free()
 	spawn_box.emit(false)
+
