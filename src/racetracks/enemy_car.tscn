@@ -47,6 +47,7 @@ height = 36.0
 
 [node name="enemy_car" type="RigidBody2D"]
 position = Vector2(928, 688)
+collision_layer = 2
 collision_mask = 3
 mass = 3628.0
 physics_material_override = SubResource("PhysicsMaterial_q6nn7")

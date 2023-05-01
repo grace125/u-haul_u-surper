@@ -18,6 +18,9 @@ follow_viewport_enabled = true
 
 [node name="testing_track" parent="CanvasLayer1" instance=ExtResource("1_80o6r")]
 
+[node name="enemy_car" parent="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder" index="0"]
+position = Vector2(929, 692)
+
 [node name="car" parent="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder" index="2" instance=ExtResource("2_avf7a")]
 position = Vector2(881, 693)
 metadata/_edit_lock_ = true

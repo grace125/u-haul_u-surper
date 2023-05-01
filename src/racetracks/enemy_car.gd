@@ -9,6 +9,10 @@ class_name EnemyCar extends RigidBody2D
 
 var waypoints_list: Array #Set by the enemy_cars node
 var current_waypoint_index: int = 0
+var potential_lap_counter: int = 1
+var laps_finished: int = 0
+
+signal lap_finished();
 
 func _process(delta):
 	var rotation_direction = Vector2(0.0, 1.0).rotated(rotation)
@@ -23,7 +27,8 @@ func _physics_process(delta):
 		current_waypoint_index += 1
 		if current_waypoint_index >= len(waypoints_list):
 			current_waypoint_index = 0
-		print("current_waypoint_index ", current_waypoint_index, " ", waypoints_list[current_waypoint_index])
+			potential_lap_counter += 1
+		# print("current_waypoint_index ", current_waypoint_index, " ", waypoints_list[current_waypoint_index])
 	if linear_velocity.length() < max_speed:
 		apply_central_force(800000.0 * global_position.direction_to(waypoints_list[current_waypoint_index]) * speed * delta)
 	if linear_velocity != Vector2.ZERO:

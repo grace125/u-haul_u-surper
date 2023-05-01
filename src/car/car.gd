@@ -7,6 +7,7 @@ class_name Car extends RigidBody2D
 var waypoints_list: Array #Set by the enemy_cars node
 var current_waypoint_index: int = 0
 var potential_lap_counter: int = 0
+var laps_finished: int = 0
 
 const BOX = preload("res://src/race_interactables/box.tscn")
 
@@ -23,7 +24,7 @@ signal shake(Vector2);
 # steer_speed: the steer speed modifier (the variable exported above)
 signal turning(velocity: float);
 
-signal lap();
+signal lap_finished();
 
 func _ready():
 	$AnimatedSprite2D.play("default")
@@ -34,7 +35,7 @@ func _physics_process(delta):
 		if current_waypoint_index >= len(waypoints_list):
 			current_waypoint_index = 0
 			potential_lap_counter += 1
-			print("AAAAA" + str(potential_lap_counter))
+			
 	
 	var input_direction: Vector2 = Input.get_vector("Left", "Right", "Forward", "Backward")
 	var steer_control = input_direction.x
