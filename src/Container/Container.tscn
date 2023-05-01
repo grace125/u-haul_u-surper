@@ -1,11 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3qu55nqmgv7b"]
+[gd_scene load_steps=19 format=3 uid="uid://c3qu55nqmgv7b"]
 
 [ext_resource type="Texture2D" uid="uid://cfscbgduf437v" path="res://assets/container/container_inside.png" id="1_n1xci"]
 [ext_resource type="Script" path="res://src/Container/Container.gd" id="1_xdo72"]
 [ext_resource type="Script" path="res://src/Container/forces.gd" id="2_xp8sk"]
-[ext_resource type="Script" path="res://src/Container/left_bucket.gd" id="4_dtuxn"]
 [ext_resource type="Texture2D" uid="uid://xqaegyt2kb4a" path="res://assets/container/container_door.png" id="4_ya288"]
-[ext_resource type="Script" path="res://src/Container/right_bucket.gd" id="5_17xdo"]
 [ext_resource type="Texture2D" uid="uid://bjhpmlixyw25p" path="res://assets/container/cargo/box1.png" id="5_pbvly"]
 [ext_resource type="Texture2D" uid="uid://dmc3yjb8278w2" path="res://assets/container/cargo/box2.png" id="6_himyw"]
 [ext_resource type="Texture2D" uid="uid://bwd0n4x8qxrbi" path="res://assets/container/cargo/box3.png" id="7_0tlf8"]
@@ -72,12 +70,10 @@ scale = Vector2(1, 0.82)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="left_bucket" type="StaticBody2D" parent="."]
-position = Vector2(0, 100)
+[node name="left_bucket" type="Area2D" parent="."]
+position = Vector2(0, 10)
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("4_dtuxn")
-metadata/_edit_lock_ = true
 
 [node name="bucket" type="CollisionShape2D" parent="left_bucket"]
 position = Vector2(-60, 191)
@@ -92,12 +88,10 @@ scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="right_bucket" type="StaticBody2D" parent="."]
-position = Vector2(0, 100)
+[node name="right_bucket" type="Area2D" parent="."]
+position = Vector2(0, 10)
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("5_17xdo")
-metadata/_edit_lock_ = true
 
 [node name="bucket" type="CollisionShape2D" parent="right_bucket"]
 position = Vector2(204, 191)
@@ -321,3 +315,6 @@ scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="left_bucket" to="." method="spawn_left"]
+[connection signal="body_entered" from="right_bucket" to="." method="spawn_right"]
