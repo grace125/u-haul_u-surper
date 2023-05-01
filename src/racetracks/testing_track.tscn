@@ -1,19 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfodx4j2nphf1"]
+[gd_scene load_steps=11 format=3 uid="uid://bfodx4j2nphf1"]
 
 [ext_resource type="Texture2D" uid="uid://cta3wdvtsrbhn" path="res://assets/racetrack/full_tracks/main_track.png" id="1_p6le8"]
 [ext_resource type="Script" path="res://src/racetracks/river.gd" id="3_x2bix"]
 [ext_resource type="Texture2D" uid="uid://cprs5jpo1t5xg" path="res://assets/racetrack/Daisy.png" id="4_1yenf"]
+[ext_resource type="Script" path="res://src/racetracks/enemy_cars.gd" id="4_kuliw"]
+[ext_resource type="PackedScene" uid="uid://dylfpyv8lmvmd" path="res://src/racetracks/enemy_car.tscn" id="5_x62bq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2aod"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xofqd"]
 size = Vector2(44.0079, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlumn"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xyg5"]
 size = Vector2(76.3118, 119.258)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hmvpy"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wmya5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ms5hw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fb0e"]
 radius = 13.6118
+
+[sub_resource type="Curve2D" id="Curve2D_pnem7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 881, 155, 0, 0, 0, 0, 717, -68, 0, 0, 0, 0, 610, -418, 0, 0, 0, 0, 457, -564, 0, 0, 0, 0, 308, -487, 0, 0, 0, 0, 224, -286, 0, 0, 0, 0, 75, -276, 0, 0, 0, 0, -186, -169, 0, 0, 0, 0, -487, -311, 0, 0, 0, 0, -693, -365, 0, 0, 0, 0, -752, -504, 0, 0, 0, 0, -690, -636, 0, 0, 0, 0, -443, -725, 0, 0, 0, 0, -498, -805, 0, 0, 0, 0, -742, -840, 0, 0, 0, 0, -1002, -770, 0, 0, 0, 0, -1062, -579, 0, 0, 0, 0, -962, -321, 0, 0, 0, 0, -1007, -139, 0, 0, 0, 0, -1049, 34, 0, 0, 0, 0, -995, 191, 0, 0, 0, 0, -994, 360, 0, 0, 0, 0, -1042, 512, 0, 0, 0, 0, -1011, 634, 0, 0, 0, 0, -901, 727, 0, 0, 0, 0, -563, 765, 0, 0, 0, 0, -405, 936, 0, 0, 0, 0, -289, 927, 0, 0, 0, 0, -193, 829, 0, 0, 0, 0, -130, 657, 0, 0, 0, 0, -96, 409, 0, 0, 0, 0, -56, 280, 0, 0, 0, 0, 89, 198, 0, 0, 0, 0, 275, 218, 0, 0, 0, 0, 434, 314, 0, 0, 0, 0, 438, 526, 0, 0, 0, 0, 388, 786, 0, 0, 0, 0, 467, 948, 0, 0, 0, 0, 639, 1028, 0, 0, 0, 0, 847, 912, 0, 0, 0, 0, 876, 671)
+}
+point_count = 41
 
 [node name="testing_track" type="Node2D"]
 
@@ -23,6 +31,7 @@ texture = ExtResource("1_p6le8")
 metadata/_edit_lock_ = true
 
 [node name="road" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -75,7 +84,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/bench"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("RectangleShape2D_r2aod")
+shape = SubResource("RectangleShape2D_xofqd")
 
 [node name="bench2" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-322, -499)
@@ -84,7 +93,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/bench2"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("RectangleShape2D_r2aod")
+shape = SubResource("RectangleShape2D_xofqd")
 
 [node name="big_rock" type="StaticBody2D" parent="obstacles"]
 position = Vector2(681, 711)
@@ -149,7 +158,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/bridge"]
 position = Vector2(-9.81393, 4.50436)
 rotation = -0.359538
-shape = SubResource("RectangleShape2D_rlumn")
+shape = SubResource("RectangleShape2D_6xyg5")
 
 [node name="tree" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-936, -487)
@@ -158,7 +167,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree2" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1164, -535)
@@ -167,7 +176,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree2"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree3" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1179, -433)
@@ -176,7 +185,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree3"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree4" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1080, -301)
@@ -185,7 +194,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree4"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree5" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1180, -255)
@@ -194,7 +203,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree5"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree6" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-850, -265)
@@ -203,7 +212,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree6"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree7" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-884, -172)
@@ -212,7 +221,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree7"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree8" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-745, -167)
@@ -221,7 +230,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree8"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree9" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-866, -52)
@@ -230,7 +239,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree9"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree10" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-771, -57)
@@ -239,7 +248,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree10"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree11" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-702, -8)
@@ -248,7 +257,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree11"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree12" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-935, -17)
@@ -257,7 +266,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree12"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree13" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-885, 61)
@@ -266,7 +275,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree13"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree14" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-768, 35)
@@ -275,7 +284,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree14"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree15" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-672, 78)
@@ -284,7 +293,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree15"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree16" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-652, 183)
@@ -293,7 +302,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree16"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree17" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-803, 185)
@@ -302,7 +311,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree17"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree18" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-932, 144)
@@ -311,7 +320,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree18"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree19" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1102, 207)
@@ -320,7 +329,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree19"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree20" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1182, 233)
@@ -329,7 +338,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree20"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree21" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1147, -18)
@@ -338,7 +347,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree21"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree22" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1140, -159)
@@ -347,7 +356,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree22"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree23" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1071, 303)
@@ -356,7 +365,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree23"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree24" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-879, 317)
@@ -365,7 +374,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree24"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree25" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-925, 433)
@@ -374,7 +383,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree25"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree26" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-728, 465)
@@ -383,7 +392,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree26"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree27" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-861, 536)
@@ -392,7 +401,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree27"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree28" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-757, 628)
@@ -401,7 +410,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree28"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree29" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1154, 477)
@@ -410,7 +419,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree29"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree30" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1175, 693)
@@ -419,7 +428,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree30"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree31" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-1010, 845)
@@ -428,7 +437,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree31"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree32" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-790, 921)
@@ -437,7 +446,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree32"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="tree33" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-895, 1023)
@@ -446,7 +455,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/tree33"]
 position = Vector2(0.43811, -0.164673)
 rotation = -0.359538
-shape = SubResource("CircleShape2D_hmvpy")
+shape = SubResource("CircleShape2D_wmya5")
 
 [node name="small_rock" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-590, 940)
@@ -454,7 +463,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock2" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-570, 1010)
@@ -462,7 +471,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock2"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock3" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-600, 1067)
@@ -470,7 +479,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock3"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock4" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-474, 1105)
@@ -478,7 +487,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock4"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock5" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-232, 1012)
@@ -486,7 +495,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock5"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock6" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-120, 963)
@@ -494,7 +503,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock6"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock7" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-339, 800)
@@ -502,7 +511,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock7"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock8" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-69, 899)
@@ -510,7 +519,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock8"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock9" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-2, 868)
@@ -518,7 +527,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock9"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock10" type="StaticBody2D" parent="obstacles"]
 position = Vector2(141, 957)
@@ -526,7 +535,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock10"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock11" type="StaticBody2D" parent="obstacles"]
 position = Vector2(18, 773)
@@ -534,7 +543,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock11"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock12" type="StaticBody2D" parent="obstacles"]
 position = Vector2(115, 752)
@@ -542,7 +551,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock12"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock13" type="StaticBody2D" parent="obstacles"]
 position = Vector2(-309, 681)
@@ -550,7 +559,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock13"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock14" type="StaticBody2D" parent="obstacles"]
 position = Vector2(475, 1055)
@@ -558,7 +567,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock14"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock15" type="StaticBody2D" parent="obstacles"]
 position = Vector2(528, 848)
@@ -566,7 +575,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock15"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock16" type="StaticBody2D" parent="obstacles"]
 position = Vector2(570, 769)
@@ -574,7 +583,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock16"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock17" type="StaticBody2D" parent="obstacles"]
 position = Vector2(728, 748)
@@ -582,7 +591,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock17"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock18" type="StaticBody2D" parent="obstacles"]
 position = Vector2(711, 889)
@@ -590,7 +599,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock18"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock19" type="StaticBody2D" parent="obstacles"]
 position = Vector2(511, 690)
@@ -598,7 +607,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock19"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="small_rock20" type="StaticBody2D" parent="obstacles"]
 position = Vector2(573, 657)
@@ -606,11 +615,29 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacles/small_rock20"]
 position = Vector2(0.43811, -0.164673)
-shape = SubResource("CircleShape2D_ms5hw")
+shape = SubResource("CircleShape2D_6fb0e")
 
 [node name="daisy" type="Sprite2D" parent="."]
 position = Vector2(-1199, -1079)
 texture = ExtResource("4_1yenf")
+
+[node name="enemy_cars" type="Node2D" parent="."]
+script = ExtResource("4_kuliw")
+
+[node name="Path2D" type="Path2D" parent="enemy_cars"]
+curve = SubResource("Curve2D_pnem7")
+
+[node name="enemy_cars_holder" type="Node2D" parent="enemy_cars"]
+
+[node name="enemy_car" parent="enemy_cars/enemy_cars_holder" instance=ExtResource("5_x62bq")]
+car_color = Color(1, 0.101961, 0.101961, 1)
+
+[node name="enemy_car2" parent="enemy_cars/enemy_cars_holder" instance=ExtResource("5_x62bq")]
+position = Vector2(836, 691)
+mass = 4000.0
+speed = 29.0
+max_speed = 109.0
+car_color = Color(0.129412, 0.0470588, 0.768627, 1)
 
 [connection signal="body_entered" from="river/part1" to="river" method="_on_part_1_body_entered"]
 [connection signal="body_entered" from="river/part2" to="river" method="_on_part_2_body_entered"]
