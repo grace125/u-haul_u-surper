@@ -17,6 +17,8 @@ var v0: Vector2 = linear_velocity;
 var linear_acceleration: Vector2 = Vector2.ZERO;
 var r0: float = angular_velocity;
 
+@export var start_flag: bool = false
+
 signal shake(Vector2);
 
 # Emits on change of turning
@@ -37,7 +39,11 @@ func _physics_process(delta):
 			potential_lap_counter += 1
 			
 	
-	var input_direction: Vector2 = Input.get_vector("Left", "Right", "Forward", "Backward")
+	var input_direction: Vector2;
+	if start_flag:
+		input_direction = Input.get_vector("Left", "Right", "Forward", "Backward")
+	else:
+		input_direction = Vector2.ZERO
 	var steer_control = input_direction.x
 	var forward_control = input_direction.y
 	var rotation_direction = Vector2(0.0, 1.0).rotated(rotation)
@@ -93,3 +99,5 @@ func spawn_box(left: bool):
 		box.linear_velocity = 4*Vector2(15.0, 0.0).rotated(rotation)
 	get_parent().add_child(box)
 	
+func on_race_start():
+	start_flag = true

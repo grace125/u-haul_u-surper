@@ -644,12 +644,13 @@ curve = SubResource("Curve2D_pnem7")
 
 [node name="enemy_car" parent="enemy_cars/enemy_cars_holder" instance=ExtResource("5_x62bq")]
 position = Vector2(928, 691)
+speed = 40.0
 car_color = Color(1, 0.101961, 0.101961, 1)
 
 [node name="enemy_car2" parent="enemy_cars/enemy_cars_holder" instance=ExtResource("5_x62bq")]
 position = Vector2(836, 691)
 mass = 4000.0
-speed = 29.0
+speed = 40.0
 max_speed = 109.0
 car_color = Color(0.129412, 0.0470588, 0.768627, 1)
 

@@ -12,6 +12,8 @@ var current_waypoint_index: int = 0
 var potential_lap_counter: int = 1
 var laps_finished: int = 0
 
+@export var start_flag: bool = false
+
 signal lap_finished();
 
 func _process(delta):
@@ -29,9 +31,11 @@ func _physics_process(delta):
 			current_waypoint_index = 0
 			potential_lap_counter += 1
 		# print("current_waypoint_index ", current_waypoint_index, " ", waypoints_list[current_waypoint_index])
-	if linear_velocity.length() < max_speed:
-		apply_central_force(800000.0 * global_position.direction_to(waypoints_list[current_waypoint_index]) * speed * delta)
+	if start_flag:
+		if linear_velocity.length() < max_speed:
+			apply_central_force(800000.0 * global_position.direction_to(waypoints_list[current_waypoint_index]) * speed * delta)
 	if linear_velocity != Vector2.ZERO:
 		rotation = Vector2(0.0, -1.0).angle_to(linear_velocity)
 	
-	
+func on_race_start():
+	start_flag = true

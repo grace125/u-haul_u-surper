@@ -42,6 +42,7 @@ text = "Start"
 
 [node name="enemy_car" parent="testing_track/enemy_cars/enemy_cars_holder" index="0"]
 car_color = Color(1, 1, 1, 1)
+start_flag = true
 
 [node name="Camera2D" type="Camera2D" parent="testing_track/enemy_cars/enemy_cars_holder/enemy_car" index="2"]
 

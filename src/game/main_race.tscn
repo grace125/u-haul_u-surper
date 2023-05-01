@@ -56,6 +56,9 @@ transform = Transform2D(1, 0, 0, 1, 125, 0)
 
 [connection signal="shake" from="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/car" to="CanvasLayer2/Container" method="shake"]
 [connection signal="turning" from="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/car" to="CanvasLayer2/Container" method="turning"]
+[connection signal="start_race" from="CanvasLayer1/start_text" to="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/enemy_car" method="on_race_start"]
+[connection signal="start_race" from="CanvasLayer1/start_text" to="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/enemy_car2" method="on_race_start"]
+[connection signal="start_race" from="CanvasLayer1/start_text" to="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/car" method="on_race_start"]
 [connection signal="timeout" from="CanvasLayer1/start_text/321_timer" to="CanvasLayer1/start_text" method="_on_321_timer_timeout"]
 [connection signal="spawn_box" from="CanvasLayer2/Container" to="CanvasLayer1/testing_track/enemy_cars/enemy_cars_holder/car" method="spawn_box"]
 
