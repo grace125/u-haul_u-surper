@@ -142,7 +142,7 @@ metadata/_edit_lock_ = true
 [node name="Door1" type="RigidBody2D" parent="."]
 collision_layer = 4
 collision_mask = 4
-mass = 10.0
+mass = 5.0
 metadata/_edit_lock_ = true
 
 [node name="Door1" type="CollisionShape2D" parent="Door1"]
@@ -159,7 +159,7 @@ metadata/_edit_lock_ = true
 [node name="Door2" type="RigidBody2D" parent="."]
 collision_layer = 4
 collision_mask = 4
-mass = 10.0
+mass = 5.0
 metadata/_edit_lock_ = true
 
 [node name="Door2" type="CollisionShape2D" parent="Door2"]
