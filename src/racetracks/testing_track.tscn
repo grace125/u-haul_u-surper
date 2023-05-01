@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfodx4j2nphf1"]
+[gd_scene load_steps=11 format=3 uid="uid://bfodx4j2nphf1"]
 
 [ext_resource type="Texture2D" uid="uid://cta3wdvtsrbhn" path="res://assets/racetrack/full_tracks/main_track.png" id="1_p6le8"]
 [ext_resource type="Script" path="res://src/racetracks/river.gd" id="3_x2bix"]
-[ext_resource type="Script" path="res://src/racetracks/enemy_car.gd" id="4_0ioyc"]
 [ext_resource type="Texture2D" uid="uid://cprs5jpo1t5xg" path="res://assets/racetrack/Daisy.png" id="4_1yenf"]
-[ext_resource type="Texture2D" uid="uid://cgxp06n32gh3w" path="res://assets/car/car.png" id="4_5561r"]
 [ext_resource type="Script" path="res://src/racetracks/enemy_cars.gd" id="4_kuliw"]
+[ext_resource type="PackedScene" uid="uid://dylfpyv8lmvmd" path="res://src/racetracks/enemy_car.tscn" id="5_x62bq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2aod"]
 size = Vector2(44.0079, 16)
@@ -24,12 +23,6 @@ _data = {
 }
 point_count = 41
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q6nn7"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3a6i"]
-radius = 9.0
-height = 36.0
-
 [node name="testing_track" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -38,6 +31,7 @@ texture = ExtResource("1_p6le8")
 metadata/_edit_lock_ = true
 
 [node name="road" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -635,23 +629,15 @@ curve = SubResource("Curve2D_p68we")
 
 [node name="enemy_cars_holder" type="Node2D" parent="enemy_cars"]
 
-[node name="enemy_car" type="RigidBody2D" parent="enemy_cars/enemy_cars_holder"]
-position = Vector2(928, 688)
-collision_mask = 3
-mass = 3628.0
-physics_material_override = SubResource("PhysicsMaterial_q6nn7")
-gravity_scale = 0.0
-linear_damp = 1.0
-angular_damp = 1.0
-script = ExtResource("4_0ioyc")
+[node name="enemy_car" parent="enemy_cars/enemy_cars_holder" instance=ExtResource("5_x62bq")]
+car_color = Color(1, 0.101961, 0.101961, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="enemy_cars/enemy_cars_holder/enemy_car"]
-modulate = Color(1, 0.101961, 0.101961, 1)
-texture = ExtResource("4_5561r")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_cars/enemy_cars_holder/enemy_car"]
-shape = SubResource("CapsuleShape2D_c3a6i")
+[node name="enemy_car2" parent="enemy_cars/enemy_cars_holder" instance=ExtResource("5_x62bq")]
+position = Vector2(836, 691)
+mass = 4000.0
+speed = 29.0
+max_speed = 109.0
+car_color = Color(0.129412, 0.0470588, 0.768627, 1)
 
 [connection signal="body_entered" from="river/part1" to="river" method="_on_part_1_body_entered"]
 [connection signal="body_entered" from="river/part2" to="river" method="_on_part_2_body_entered"]

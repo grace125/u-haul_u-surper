@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dylfpyv8lmvmd"]
+
+[ext_resource type="Script" path="res://src/racetracks/enemy_car.gd" id="1_14tqy"]
+[ext_resource type="Texture2D" uid="uid://cgxp06n32gh3w" path="res://assets/car/car.png" id="2_g4ro7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q6nn7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3a6i"]
+radius = 9.0
+height = 36.0
+
+[node name="enemy_car" type="RigidBody2D"]
+position = Vector2(928, 688)
+collision_mask = 3
+mass = 3628.0
+physics_material_override = SubResource("PhysicsMaterial_q6nn7")
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_14tqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.101961, 0.101961, 1)
+texture = ExtResource("2_g4ro7")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_c3a6i")

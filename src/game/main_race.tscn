@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://fjhovfng8sfj"]
+[gd_scene load_steps=7 format=3 uid="uid://dfrd4hnq4ihj6"]
 
 [ext_resource type="Script" path="res://src/game/main_race.gd" id="1_65pml"]
 [ext_resource type="PackedScene" uid="uid://bfodx4j2nphf1" path="res://src/racetracks/testing_track.tscn" id="1_80o6r"]
