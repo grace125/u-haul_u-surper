@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3qu55nqmgv7b"]
+[gd_scene load_steps=21 format=3 uid="uid://c3qu55nqmgv7b"]
 
 [ext_resource type="Texture2D" uid="uid://cfscbgduf437v" path="res://assets/container/container_inside.png" id="1_n1xci"]
 [ext_resource type="Script" path="res://src/Container/Container.gd" id="1_xdo72"]
 [ext_resource type="Script" path="res://src/Container/forces.gd" id="2_xp8sk"]
+[ext_resource type="Script" path="res://src/Container/left_bucket.gd" id="4_dtuxn"]
 [ext_resource type="Texture2D" uid="uid://xqaegyt2kb4a" path="res://assets/container/container_door.png" id="4_ya288"]
+[ext_resource type="Script" path="res://src/Container/right_bucket.gd" id="5_17xdo"]
 [ext_resource type="Texture2D" uid="uid://bjhpmlixyw25p" path="res://assets/container/cargo/box1.png" id="5_pbvly"]
 [ext_resource type="Texture2D" uid="uid://dmc3yjb8278w2" path="res://assets/container/cargo/box2.png" id="6_himyw"]
 [ext_resource type="Texture2D" uid="uid://bwd0n4x8qxrbi" path="res://assets/container/cargo/box3.png" id="7_0tlf8"]
@@ -70,39 +72,41 @@ scale = Vector2(1, 0.82)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="bucket" type="StaticBody2D" parent="."]
+[node name="left_bucket" type="StaticBody2D" parent="."]
 position = Vector2(0, 100)
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("4_dtuxn")
 metadata/_edit_lock_ = true
 
-[node name="bucket" type="CollisionShape2D" parent="bucket"]
+[node name="bucket" type="CollisionShape2D" parent="left_bucket"]
 position = Vector2(-60, 191)
 rotation = 1.5708
 scale = Vector2(3, 1.5)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="bucket2" type="CollisionShape2D" parent="bucket"]
+[node name="bucket2" type="CollisionShape2D" parent="left_bucket"]
 position = Vector2(-189, -70)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="bucket2" type="StaticBody2D" parent="."]
+[node name="right_bucket" type="StaticBody2D" parent="."]
 position = Vector2(0, 100)
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("5_17xdo")
 metadata/_edit_lock_ = true
 
-[node name="bucket" type="CollisionShape2D" parent="bucket2"]
+[node name="bucket" type="CollisionShape2D" parent="right_bucket"]
 position = Vector2(204, 191)
 rotation = 1.5708
 scale = Vector2(3, 1.5)
 shape = SubResource("RectangleShape2D_67bps")
 metadata/_edit_lock_ = true
 
-[node name="bucket2" type="CollisionShape2D" parent="bucket2"]
+[node name="bucket2" type="CollisionShape2D" parent="right_bucket"]
 position = Vector2(333, -70)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_67bps")
@@ -145,6 +149,7 @@ metadata/_edit_lock_ = true
 [node name="Door1" type="RigidBody2D" parent="."]
 collision_layer = 4
 collision_mask = 4
+mass = 10.0
 metadata/_edit_lock_ = true
 
 [node name="Door1" type="CollisionShape2D" parent="Door1"]
@@ -161,6 +166,7 @@ metadata/_edit_lock_ = true
 [node name="Door2" type="RigidBody2D" parent="."]
 collision_layer = 4
 collision_mask = 4
+mass = 10.0
 metadata/_edit_lock_ = true
 
 [node name="Door2" type="CollisionShape2D" parent="Door2"]
@@ -177,8 +183,10 @@ metadata/_edit_lock_ = true
 [node name="Box" type="RigidBody2D" parent="."]
 collision_layer = 4
 collision_mask = 4
-mass = 10.0
+mass = 25.0
 physics_material_override = SubResource("PhysicsMaterial_c5j5x")
+max_contacts_reported = 5
+contact_monitor = true
 can_sleep = false
 metadata/_edit_lock_ = true
 
@@ -189,7 +197,7 @@ shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Box/CollisionShape2D"]
+[node name="Heavy_Box" type="Sprite2D" parent="Box/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_pbvly")
@@ -200,6 +208,8 @@ collision_layer = 4
 collision_mask = 4
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_osb72")
+max_contacts_reported = 5
+contact_monitor = true
 can_sleep = false
 metadata/_edit_lock_ = true
 
@@ -210,7 +220,7 @@ shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Box2/CollisionShape2D"]
+[node name="Light_Box" type="Sprite2D" parent="Box2/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
 scale = Vector2(0.67, 0.67)
 texture = ExtResource("6_himyw")
@@ -221,17 +231,19 @@ collision_layer = 4
 collision_mask = 4
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_m5j7u")
+max_contacts_reported = 5
+contact_monitor = true
 can_sleep = false
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box6"]
-position = Vector2(93, 111)
+position = Vector2(46, 57)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Box6/CollisionShape2D"]
+[node name="Ice_Block" type="Sprite2D" parent="Box6/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
 scale = Vector2(2, 2)
 texture = ExtResource("7_22jeu")
@@ -240,8 +252,10 @@ metadata/_edit_lock_ = true
 [node name="Box3" type="RigidBody2D" parent="."]
 collision_layer = 4
 collision_mask = 4
-mass = 2.5
+mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_fpqsp")
+max_contacts_reported = 5
+contact_monitor = true
 can_sleep = false
 metadata/_edit_lock_ = true
 
@@ -251,7 +265,7 @@ shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Box3/CollisionShape2D"]
+[node name="Dense_Box" type="Sprite2D" parent="Box3/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
 texture = ExtResource("7_0tlf8")
 metadata/_edit_lock_ = true
@@ -261,6 +275,8 @@ collision_layer = 4
 collision_mask = 4
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_6ud1b")
+max_contacts_reported = 5
+contact_monitor = true
 can_sleep = false
 metadata/_edit_lock_ = true
 
@@ -271,7 +287,7 @@ shape = SubResource("RectangleShape2D_cmuns")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Box5/CollisionShape2D"]
+[node name="Plank" type="Sprite2D" parent="Box5/CollisionShape2D"]
 position = Vector2(9.53674e-07, -1.90735e-06)
 scale = Vector2(0.4, 1)
 texture = ExtResource("8_eeey1")
@@ -283,10 +299,11 @@ collision_layer = 4
 collision_mask = 4
 mass = 1.5
 physics_material_override = SubResource("PhysicsMaterial_rf8pe")
+max_contacts_reported = 5
 can_sleep = false
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Box4"]
+[node name="Rubber" type="Sprite2D" parent="Box4"]
 position = Vector2(32, 48)
 texture = ExtResource("8_sseas")
 metadata/_edit_lock_ = true
